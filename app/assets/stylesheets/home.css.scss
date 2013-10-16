@@ -1,3 +1,16 @@
 .container {
   margin: 3em;
 }
+
+a {
+  color:blue;
+  text-decoration:underline;
+}
+
+a:visited{
+  color:purple;
+}
+
+a:hover{
+  color:purple;
+}
