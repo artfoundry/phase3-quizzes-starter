@@ -25,14 +25,22 @@ $(function(){
 function Question(data){
   this.question_id = data.id
   this.question_text = data.question
+  this.question_link = "<p id='question-"+this.question_id+"'>"+this.question_text+"</p>"
+  this.appendResponsesToQuestion(data)
 }
 
 Question.prototype.appendResponsesToQuestion = function(data){
+  var self = this
   $(data.choices).each(
     function(key,value){
-
+      debugger
+      $('#question-'+self.question_id).append("<a id='answer-" + key + "'>" + value + "</a>")
     }
   )
+}
+
+function putQuestionOnThePage(link){
+  $('.container').append(link)
 }
 
 
@@ -53,12 +61,10 @@ function listenForClick(){
 function respondToClick(evt){
   if (evt.target.id.match(/quiz/)) {
     Controller.getQuestions(/quiz-(\d+)/.exec(evt.target.id)[1])}
-  else if (evt.target.id.match(/question/)) {
-    alert('call question route')
+  else if (evt.target.id.match(/answer/)) {
+    alert('call answer route')
 
   }
-  // else if evt.target === answer
-  //   call answer route
 }
 
 function makeAQuizOnThePage(i,e){
@@ -67,6 +73,6 @@ function makeAQuizOnThePage(i,e){
 }
 
 function Quiz(quiz_object){
-  this.quiz_link = "<a id='quiz-"+quiz_object.id+"'>" + quiz_object.id + ':' + quiz_object.name + "</a>"
+  this.quiz_link = "<a id='quiz-"+quiz_object.id+"'>" + quiz_object.id + ':' + quiz_object.name + "</a><div id='qz-"+quiz_object.id+"-questions'></div>"
   this.quiz_id = quiz_object.id
 }
