@@ -1,3 +1,28 @@
 .container {
   margin: 3em;
 }
+
+a {
+  color:blue;
+  text-decoration:underline;
+}
+
+a:visited{
+  color:purple;
+}
+
+a:hover{
+  color:purple;
+  opacity:0.2;
+}
+
+.correct{
+  color:green;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.incorrect{
+  color:red;
+  text-decoration:line-through;
+}
